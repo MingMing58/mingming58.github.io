@@ -1,0 +1,69 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "ToolHead": [
+    {
+      "id": 1,
+      "name": "批量删除",
+      "code": "HeadDel",
+      "tpl": "<a class=\"layui-btn layui-btn-sm layui-btn-danger\" lay-event=\"HeadDel\">  <i class=\"layui-icon layui-icon-delete\"></i>批量删除</a>",
+      "tplData": "{}"
+    },   
+    {
+      "id": 2,
+      "name": "导入",
+      "code": "HeadExcel",
+      "tpl": "<a class=\"layui-btn layui-btn-sm layui-btn-primary\" lay-event=\"HeadExcel\"> <i class=\"layui-icon layui-icon-upload-circle\"></i> 导入</a>",
+      "tplData": "{}"
+    },   
+    {
+      "id": 3,
+      "name": "添加",
+      "code": "HeadAdd",
+      "tpl": "<a class=\"layui-btn layui-btn-sm layui-btn-primary\" lay-event=\"HeadAdd\"> <i class=\"layui-icon layui-icon-add-1\"></i>添加</a>",
+      "tplData": "{}"
+    }
+  
+  ],
+  "ToolRow": [
+    {
+      "id": 1,
+      "name": "详情",
+      "code": "RowInfo",
+      "tpl": "<a class=\"layui-btn layui-btn-xs\" lay-event=\"RowInfo\">详情</a> ",
+      "tplData": "{}"
+    },   
+    {
+      "id": 2,
+      "name": "添加子项",
+      "code": "RowPidAdd",
+      "tpl": "<a class=\"layui-btn layui-btn-xs layui-btn-primary\" lay-event=\"RowPidAdd\"><i class=\"layui-icon layui-icon-add-1\"></i>添加子项</a>",
+      "tplData": "{}"
+    },   
+    {
+      "id": 3,
+      "name": "编辑",
+      "code": "RowEdit",
+      "tpl": "<a class=\"layui-btn layui-btn-xs layui-btn-warm \" lay-event=\"RowEdit\"> <i class=\"layui-icon layui-icon-edit\"></i>编辑</a>",
+      "tplData": "{}"
+    }
+    ,   
+    {
+      "id": 4,
+      "name": "删除",
+      "code": "RowDel",
+      "tpl": "<a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"RowDel\">  <i class=\"layui-icon layui-icon-delete\"></i>删除</a>",
+      "tplData": "{}"
+    }
+  ],
+  "ToolPage": [
+    {
+      "id": 1,
+      "name": "统计",
+      "code": "PageReport",
+      "tpl": "<a class=\"layui-btn layui-btn-primary layui-btn-sm\" lay-event=\"PageReport\"><i class=\"layui-icon layui-icon-chart-screen\"></i>统计 </a>",
+      "tplData": "{}"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+
+body {
+    margin: 10px;
+    background: #F9F9F9;
+}
+
+.layui-form-pane .layui-input-block {
+    margin-left: 95px;
+    left: 0px;
+}
+.layui-form-pane .layui-form-checkbox{
+    margin: 2px 0 2px 10px;
+}
+.layui-form-pane .layui-form-label {
+    border-radius: 0px;
+}
+.layui-form-item {
+    margin-bottom: 4px;
+}
+.layui-tab-content{
+
+    background-color:#ffffff;
+    padding: 0px;
+}
+
+.layuimini-container {
+    border: 1px solid #F9F9F9;
+    border-radius: 5px;
+    background-color: #ffffff
+}
+
+.layuimini-main {
+    margin: 10px 10px 10px 10px;
+}
+
+/**必填红点 */
+.layuimini-form > .layui-form-item > .required:after {
+    content: '*';
+    color: red;
+    position: absolute;
+    margin-left: 4px;
+    font-weight: bold;
+    line-height: 1.8em;
+    top: 6px;
+    right: 5px;
+}
+
+.layuimini-form > .layui-form-item > .layui-form-label {
+    width: 120px !important;
+}
+
+.layuimini-form > .layui-form-item > .layui-input-block {
+    margin-left: 150px !important;
+}
+
+.layuimini-form > .layui-form-item > .layui-input-block > tip {
+    display: inline-block;
+    margin-top: 10px;
+    line-height: 10px;
+    font-size: 10px;
+    color: #a29c9c;
+}
+
+/**搜索框*/
+.table-search-fieldset {
+    margin: 0;
+    /* border: 1px solid #e6e6e6; */
+    padding: 2px 0px;
+    color: #6b6b6b;
+}
+/**搜索框*/
+.table-search-fieldset .layui-inline{
+    margin: 1px 0px;
+}
+
+/**自定义滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9c9da0;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em
+}

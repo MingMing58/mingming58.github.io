@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.92/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+
+<body>
+
+    <div class="table-search-fieldset">
+        <form id="table_data_sch" class="layui-form layui-form-pane" action="">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" placeholder="用户姓名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="sex" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">城市</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="city" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <span class="layui-btn layui-btn-sm layui-btn-primary" lay-submit type="submit"
+                    lay-filter="data-search-btn"><i class="layui-icon layui-icon-search"></i>搜 索</span>
+            </div>
+        </form>
+
+    </div>
+    <table id="table_data" class="layui-hide" lay-filter="TableFilter"></table>
+    <script type="text/html" id="ToolHead">
+            <div class="layui-btn-container">
+                <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="HeadDel">  <i class="layui-icon layui-icon-delete"></i>批量删除</a>
+                <a class="layui-btn layui-btn-sm layui-btn-primary" lay-event="HeadExcel"> <i class="layui-icon layui-icon-upload-circle"></i> 导入</a>
+                <a class="layui-btn layui-btn-sm layui-btn-primary" lay-event="HeadAdd"> <i class="layui-icon layui-icon-add-1"></i>添加</a>
+            </div>
+        </script>
+    <script type="text/html" id="ToolRow">
+            <div class="layui-btn-container">
+                <a class="layui-btn layui-btn-xs" lay-event="RowInfo">详情</a> 
+                <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="RowPidAdd"><i class="layui-icon layui-icon-add-1"></i>添加子项</a>
+                <a class="layui-btn layui-btn-xs layui-btn-warm " lay-event="RowEdit"> <i class="layui-icon layui-icon-edit"></i>编辑</a>
+                <a class="layui-btn layui-btn-xs layui-btn-danger " lay-event="RowDel">  <i class="layui-icon layui-icon-delete"></i>删除</a>
+            </div>
+        </script>
+    <script type="text/html" id="ToolPage">
+            <div class="layui-btn-container">
+                <a class="layui-btn layui-btn-primary layui-btn-sm" lay-event="PageReport"><i class="layui-icon layui-icon-chart-screen"></i>统计 </a>
+            </div>
+          </script>
+
+    <script src="../lib/layui-v2.92/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use(['form', 'table'], function () {
+            var $ = layui.jquery,
+                form = layui.form,
+                table = layui.table;
+            table.render({
+                elem: '#table_data',
+                url: '../api/data/TplList.json',
+                toolbar: '#ToolHead',
+                pagebar: '#ToolPage', // 分页栏模板
+                defaultToolbar: ['filter', 'exports', 'print', {
+                    title: '提示',
+                    layEvent: 'LAYTABLE_TIPS',
+                    icon: 'layui-icon-tips',
+                    onClick: function (obj) {
+                        layer.alert('自定义工具栏图标按钮');
+                    }
+                }],
+                height: function () { return $(window).height() - ($('#table_data_sch').outerHeight() + 22); },
+                css: ['.layui-table-tool-temp{padding-right: 145px;}'].join(''),
+                cols: [[
+                    { type: "checkbox", width: 50 },
+                    { field: 'id', width: 80, title: 'ID', sort: true },
+                    { field: 'username', width: 80, title: '用户名' },
+                    { field: 'sex', width: 80, title: '性别', sort: true },
+                    { field: 'city', width: 80, title: '城市' },
+                    { field: 'sign', title: '签名', minWidth: 150 },
+                    { field: 'experience', width: 80, title: '积分', sort: true },
+                    { field: 'score', width: 80, title: '评分', sort: true },
+                    { field: 'classify', width: 80, title: '职业' },
+                    { field: 'classify', width: 80, title: '职业' },
+                    { field: 'sign', title: '签名', minWidth: 150 },
+                    { field: 'sign', title: '签名', minWidth: 150 },
+                    { field: 'sign', title: '签名', minWidth: 150 },
+                    { field: 'classify', minWidth: 80, title: '职业' },
+                    { field: 'classify', minWidth: 80, title: '职业' },
+                    { field: 'classify', minWidth: 80, title: '职业' },
+                    { field: 'wealth', title: '财富', sort: true },
+                    { fixed: 'right', title: '操作', minWidth: 275, toolbar: '#ToolRow' }
+                ]],
+                skin: 'line',
+                size: 'md', //sm|md|lg
+                loading: true,
+                even: true,
+                cellMinWidth: 80,
+                totalRow: true,
+                page: true,
+                limits: [10, 15, 20, 25, 50, 100],
+                limit: 15,
+                done: function (res, curr, count) { }
+            });
+
+            // 监听搜索操作
+            form.on('submit(data-search-btn)', function (data) {
+                var result = JSON.stringify(data.field);
+                layer.alert(result, {
+                    title: '最终的搜索信息'
+                });
+
+                //执行搜索重载
+                table.reload('currentTableId', {
+                    page: {
+                        curr: 1
+                    }
+                    , where: {
+                        searchParams: result
+                    }
+                }, 'data');
+
+                return false;
+            });
+
+            /**
+             * toolbar监听事件
+             */
+            table.on('toolbar(TableFilter)', function (obj) {
+                if (obj.event === 'HeadAdd') {  // 监听添加操作
+                    var index = layer.open({
+                        title: '添加用户',
+                        type: 2,
+                        offset: 'r',
+                        anim: 'slideLeft', // 从右往左
+                        shade: 0.2,
+                        maxmin: true,
+                        shadeClose: true,
+                        maxWidth: 800,
+                        area: ['60%', '100%'],
+                        content: '../page/TplEdit.html',
+                    });
+                    $(window).on("resize", function () {
+                        layer.full(index);
+                    });
+                } else if (obj.event === 'HeadDel') {  // 监听删除操作
+                    var checkStatus = table.checkStatus('currentTableId')
+                        , data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                }
+            });
+            //监听表格复选框选择
+            table.on('checkbox(TableFilter)', function (obj) {
+                console.log(obj)
+            });
+
+            table.on('tool(TableFilter)', function (obj) {
+                var data = obj.data;
+                if (obj.event === 'RowEdit') {
+
+                    var index = layer.open({
+                        title: '编辑用户',
+                        type: 2,
+                        offset: 'r',
+                        anim: 'slideLeft', // 从右往左
+                        shade: 0.2,
+                        maxmin: true,
+                        shadeClose: true,
+                        area: ['700px', '100%'],
+                        content: '../page/form.html',
+                    });
+                    $(window).on("resize", function () {
+                        layer.full(index);
+                    });
+                    return false;
+                } else if (obj.event === 'RowDel') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                    });
+                }
+            });
+
+            // 底部分页栏事件
+            table.on('pagebar(TableFilter)', function (obj) {
+                if (obj.event === 'PageAdd') {  // 监听添加操作
+                    var index = layer.open({
+                        title: '添加用户',
+                        type: 2,
+                        offset: 'r',
+                        anim: 'slideLeft', // 从右往左
+                        shade: 0.2,
+                        maxmin: true,
+                        shadeClose: true,
+                        maxWidth: 800,
+                        area: ['60%', '100%'],
+                        content: '../page/table/add.html',
+                    });
+                    $(window).on("resize", function () {
+                        layer.full(index);
+                    });
+                } else if (obj.event === 'PageDel') {  // 监听删除操作
+                    var checkStatus = table.checkStatus('currentTableId')
+                        , data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
